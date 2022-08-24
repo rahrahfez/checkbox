@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+
 function App() {
+  var ids: Array<string> = new Array<string>();
+
+  const handleId = (id: string) =>
+  {
+     if (!ids.includes(id)) ids.push(id)
+     else ids = ids.filter(x => x !== id)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>
+        <input type="checkbox" id="1" onChange={e => { handleId(e.currentTarget.id) }} />
+        <input type="checkbox" id="2" onChange={e => { handleId(e.currentTarget.id) }} />
+        <input type="checkbox" id="3" onChange={e => { handleId(e.currentTarget.id) }} />
+        <input type="checkbox" id="4" onChange={e => { handleId(e.currentTarget.id) }} />
+        <input type="checkbox" id="5" onChange={e => { handleId(e.currentTarget.id) }} />
+      </p>
+      <button onClick={() => console.log(ids)}>Click Me</button>
     </div>
   );
 }
